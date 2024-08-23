@@ -9,8 +9,6 @@ function App() {
 	>([])
 
 	function calculateDebts(expenses: { name: string; spent: number }[]): void {
-		console.log(expenses, 'expenses')
-
 		const total = expenses.reduce(
 			(sum: number, expense: { name: string; spent: number }) =>
 				sum + expense.spent,
@@ -27,7 +25,6 @@ function App() {
 				debt: average - expense.spent,
 			}
 		})
-		console.log(debts, 'debts')
 
 		const results: { name: string; spent: number; action: string }[] = []
 
