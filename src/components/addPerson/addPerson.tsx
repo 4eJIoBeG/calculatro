@@ -21,13 +21,13 @@ const AddPerson: React.FC<CalculateDebtsProps> = ({ calculateDebts }) => {
 
 	const addPerson = useCallback(() => {
 		const newPerson = { name: '', spent: 0, index: Date.now() }
-		const newPeople = [...people, newPerson]
+		const newPeople = [newPerson, ...people]
 		setPeople(newPeople)
 		calculateDebts(newPeople)
 	}, [people, calculateDebts])
 
 	const changePerson = useCallback(
-		(key: string, value: string | number, index: number) => {
+		(key: string, value: string | number | null, index: number) => {
 			const newPeople = people.map(person =>
 				person.index === index ? { ...person, [key]: value } : person
 			)
