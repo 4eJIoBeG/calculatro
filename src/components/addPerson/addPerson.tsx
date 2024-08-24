@@ -19,7 +19,9 @@ const AddPerson: React.FC<CalculateDebtsProps> = ({ calculateDebts }) => {
 		[calculateDebts]
 	)
 
+	// Изменяем логику добавления новых людей
 	const addPerson = useCallback(() => {
+		// Добавляем нового человека в начало списка
 		const newPerson = { name: '', spent: 0, index: Date.now() }
 		const newPeople = [newPerson, ...people]
 		setPeople(newPeople)
@@ -27,7 +29,7 @@ const AddPerson: React.FC<CalculateDebtsProps> = ({ calculateDebts }) => {
 	}, [people, calculateDebts])
 
 	const changePerson = useCallback(
-		(key: string, value: string | number | null, index: number) => {
+		(key: string, value: string | number, index: number) => {
 			const newPeople = people.map(person =>
 				person.index === index ? { ...person, [key]: value } : person
 			)
@@ -41,9 +43,9 @@ const AddPerson: React.FC<CalculateDebtsProps> = ({ calculateDebts }) => {
 		(index: number) => {
 			const newPeople = people.filter(person => person.index !== index)
 			setPeople(newPeople)
-			debouncedCalculateDebts(newPeople)
+			calculateDebts(newPeople)
 		},
-		[people, debouncedCalculateDebts]
+		[people, calculateDebts]
 	)
 
 	useEffect(() => {
