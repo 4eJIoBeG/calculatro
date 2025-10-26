@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
-import { Button, FormControl, Row, Col } from 'react-bootstrap'
 import debounce from 'lodash.debounce'
+import { useCallback, useEffect, useState } from 'react'
+import { Button, Col, FormControl, Row } from 'react-bootstrap'
 
 interface CalculateDebtsProps {
 	calculateDebts: (expenses: { name: string; spent: number }[]) => void
@@ -22,7 +22,7 @@ const AddPerson: React.FC<CalculateDebtsProps> = ({ calculateDebts }) => {
 	// Изменяем логику добавления новых людей
 	const addPerson = useCallback(() => {
 		// Добавляем нового человека в начало списка
-		const newPerson = { name: '', spent: 0, index: Date.now() }
+		const newPerson = { name: '', spent: '', index: Date.now() }
 		const newPeople = [newPerson, ...people]
 		setPeople(newPeople)
 		calculateDebts(newPeople)

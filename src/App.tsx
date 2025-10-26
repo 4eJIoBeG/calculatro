@@ -59,7 +59,7 @@ function App() {
 			{results.map((result, index) => {
 				return (
 					<div className='person-info' key={index}>
-						[<strong>{result?.name.toUpperCase()}</strong>] потратил{' '}
+						<strong>{result?.name.toUpperCase()}</strong> потратил{' '}
 						<strong>{result.spent}</strong> и <strong>{result?.action}</strong>
 					</div>
 				)
