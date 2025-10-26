@@ -22,7 +22,7 @@ const AddPerson: React.FC<CalculateDebtsProps> = ({ calculateDebts }) => {
 	// Изменяем логику добавления новых людей
 	const addPerson = useCallback(() => {
 		// Добавляем нового человека в начало списка
-		const newPerson = { name: '', spent: '', index: Date.now() }
+		const newPerson = { name: '', spent: 0, index: Date.now() }
 		const newPeople = [newPerson, ...people]
 		setPeople(newPeople)
 		calculateDebts(newPeople)
@@ -81,7 +81,7 @@ const AddPerson: React.FC<CalculateDebtsProps> = ({ calculateDebts }) => {
 						<Col md={4} sm={6} className='mb-3'>
 							<FormControl
 								type='number'
-								value={person.spent}
+								value={person.spent === 0 ? '' : person.spent}
 								onChange={event =>
 									changePerson(
 										'spent',
